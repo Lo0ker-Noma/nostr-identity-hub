@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nostr Identity Hub | La Crypta</title>
+  <meta name="description" content="Verifiable Nostr identities & reputation badges for La Crypta community. Muerte a los scammers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       LA CRYPTA DESIGN SYSTEM
+       Background: #0A0A0A | Text: #FAFAFA
+       Accent: #B4F953 | Cards: #171717 / #262626
+       Muted: rgba(255,255,255,0.7) | #A3A3A3
+       Buttons: pill (9999px), border #262626
+       ============================================ */
+
+    :root {
+      --bg-primary: #0A0A0A;
+      --bg-card: #171717;
+      --bg-card-hover: #1F1F1F;
+      --bg-elevated: #262626;
+      --border: #262626;
+      --border-hover: #404040;
+      --text-primary: #FAFAFA;
+      --text-secondary: rgba(255,255,255,0.7);
+      --text-muted: #A3A3A3;
+      --accent: #B4F953;
+      --accent-hover: #C8FF70;
+      --accent-dim: rgba(180, 249, 83, 0.15);
+      --danger: #FF4D4D;
+      --success: #4ADE80;
+      --warning: #FBBF24;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- PERSPECTIVE GRID (like lacrypta.ar hero) ---- */
+    .grid-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      perspective: 800px;
+      transform-style: preserve-3d;
+    }
+
+    .grid-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+    }
+
+    /* ---- NAVBAR ---- */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .navbar-logo svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .navbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* ---- BUTTONS (pill style like lacrypta.ar) ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .btn:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #0A0A0A;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn-sm {
+      padding: 6px 16px;
+      font-size: 13px;
+    }
+
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---- HERO SECTION ---- */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 120px 24px 80px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
+      border: 1px solid rgba(180, 249, 83, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 80px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .hero h1 .accent {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ---- STATS BAR ---- */
+    .stats-bar {
+      display: flex;
+      gap: 32px;
+      margin-top: 64px;
+      padding: 24px 48px;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* ---- SECTIONS ---- */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 120px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ---- CARDS GRID ---- */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ---- BADGE DISPLAY ---- */
+    .badge-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .badge-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .badge-item .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---- PROFILE CARD (sample) ---- */
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .profile-nip05 {
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .profile-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .profile-badge {
+      padding: 4px 12px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(180, 249, 83, 0.2);
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .reputation-bar {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .reputation-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .reputation-label span:first-child {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reputation-label span:last-child {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .reputation-track {
+      height: 4px;
+      background: var(--bg-elevated);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .reputation-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* ---- COMPARISON SECTION ---- */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .comparison-col {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+
+    .comparison-col.danger {
+      border-color: rgba(255, 77, 77, 0.3);
+    }
+
+    .comparison-col.success {
+      border-color: rgba(180, 249, 83, 0.3);
+    }
+
+    .comparison-col h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-col.danger h3 { color: var(--danger); }
+    .comparison-col.success h3 { color: var(--accent); }
+
+    .comparison-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comparison-col li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .comparison-col li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .comparison-col.danger li::before { background: var(--danger); }
+    .comparison-col.success li::before { background: var(--accent); }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ---- VIEWS (SPA navigation) ---- */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ---- FORM ELEMENTS ---- */
+    .input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    /* ---- TOAST ---- */
+    .toast-container {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      animation: toastIn 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .toast-success {
+      background: var(--accent);
+      color: #0A0A0A;
+    }
+
+    .toast-error {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 36px; }
+      .stats-bar { flex-direction: column; gap: 16px; padding: 24px; }
+      .comparison { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .section { padding: 80px 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 15px; }
+      .navbar { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-logo" onclick="showView('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+      <span>identity hub</span>
+    </a>
+    <div class="navbar-actions">
+      <button class="btn btn-sm" onclick="showView('directory')">Directory</button>
+      <button class="btn btn-sm btn-accent" onclick="showView('verify')" id="nav-verify-btn">Verify</button>
+    </div>
+  </nav>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====== HOME VIEW ====== -->
+  <div class="view active" id="view-home">
+    <section class="hero">
+      <div class="hero-badge">
+        <span>⚡</span>
+        <span>Hackathon Abril 2026 — La Crypta</span>
+      </div>
+
+      <h1>
+        Verify <span class="accent">identity</span>,<br>
+        kill the <span class="accent">scammers</span>
+      </h1>
+
+      <p>
+        Perfiles verificables con badges de reputacion sobre Nostr.
+        Nunca mas un come empanadas se hace pasar por alguien de la comunidad.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-accent" onclick="showView('create')">Create Profile ↗</button>
+        <button class="btn" onclick="showView('directory')">Browse Directory</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-value" id="stat-verified">0</div>
+          <div class="stat-label">Verified</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-badges">0</div>
+          <div class="stat-label">Badges</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-events">0</div>
+          <div class="stat-label">Events</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM / SOLUTION -->
+    <section class="section">
+      <div class="section-header">
+        <h2>The Problem We Solve</h2>
+        <p>Real scams happen in our community. We stop them with verifiable Nostr identity.</p>
+      </div>
+
+      <div class="comparison">
+        <div class="comparison-col danger">
+          <h3>❌ Without Identity Hub</h3>
+          <ul>
+            <li>Impersonators go undetected</li>
+            <li>Scammers change name slightly and blend in</li>
+            <li>New members can't tell who's legit</li>
+            <li>No way to prove real contributions</li>
+            <li>Come empanadas walk free 🥟</li>
+          </ul>
+        </div>
+        <div class="comparison-col success">
+          <h3>✅ With Identity Hub</h3>
+          <ul>
+            <li>NIP-05 verified identity (user@lacrypta.ar)</li>
+            <li>Public badge history on Nostr relays</li>
+            <li>Reputation score based on real activity</li>
+            <li>Instant verification of any member</li>
+            <li>Come empanadas = 0 badges, exposed 🚫</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BADGE TYPES -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Reputation Badges</h2>
+        <p>Earn badges through real participation. Build trust one event at a time.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3>Attendance</h3>
+          <p>Proof of attendance at La Crypta events. Linked to POA-HDMP system via NIP-58.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎤</div>
+          <h3>Speaker</h3>
+          <p>Given a talk or workshop. Verified by event organizers with badge issuance.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">👨‍💻</div>
+          <h3>Contributor</h3>
+          <p>Built something for the community. Code, content, tools, or infrastructure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Donor</h3>
+          <p>Supported La Crypta via Lightning zaps. Verified through NIP-57 receipts.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <h3>Verified Member</h3>
+          <p>Identity confirmed through NIP-05 DNS verification. The base of trust.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Core Member</h3>
+          <p>Long-term contributor with multiple badges. The real cypherpunk jungle animals.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE PROFILE -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Profile Preview</h2>
+        <p>This is how a verified community member looks.</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar">🦍</div>
+          <div>
+            <div class="profile-name">Agus Gorilla</div>
+            <div class="profile-nip05">agus@lacrypta.ar ✓</div>
+          </div>
+        </div>
+        <div class="profile-badges">
+          <span class="profile-badge">📍 12 Events</span>
+          <span class="profile-badge">🎤 Speaker</span>
+          <span class="profile-badge">👨‍💻 Contributor</span>
+          <span class="profile-badge">⚡ Donor</span>
+          <span class="profile-badge">🏆 Core</span>
+        </div>
+        <div class="reputation-bar">
+          <div class="reputation-label">
+            <span>Reputation</span>
+            <span>92/100</span>
+          </div>
+          <div class="reputation-track">
+            <div class="reputation-fill" style="width: 92%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== CREATE PROFILE VIEW ====== -->
+  <div class="view" id="view-create">
+    <section class="section" style="padding-top: 140px; max-width: 500px;">
+      <div class="section-header">
+        <h2>Create Your Profile</h2>
+        <p>Connect your Nostr identity and start building reputation.</p>
+      </div>
+
+      <div class="card" style="padding: 32px;">
+        <div class="form-group">
+          <label class="form-label">Nostr Public Key (npub)</label>
+          <input type="text" class="input" id="input-npub" placeholder="npub1...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Display Name</label>
+          <input type="text" class="input" id="input-name" placeholder="e.g. Agus Gorilla">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Desired NIP-05 identifier</label>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <input type="text" class="input" id="input-nip05" placeholder="username" style="flex: 1;">
+            <span style="color: var(--text-muted); font-size: 14px;">@lacrypta.ar</span>
+          </div>
+        </div>
+        <button class="btn btn-accent" style="width: 100%; justify-content: center; margin-top: 16px;" onclick="createProfile()">
+          Register Identity ↗
+        </button>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; text-align: center;">
+          Your profile will be published to Nostr relays and verified via NIP-05.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== DIRECTORY VIEW ====== -->
+  <div class="view" id="view-directory">
+    <section class="section" style="padding-top: 140px;">
+      <div class="section-header">
+        <h2>Community Directory</h2>
+        <p>Verified members of La Crypta with their reputation badges.</p>
+      </div>
+
+      <div style="max-width: 500px; margin: 0 auto 32px;">
+        <input type="text" class="input" id="input-search" placeholder="Search by name, npub, or NIP-05..." oninput="filterDirectory()">
+      </div>
+
+      <div id="directory-list" class="cards-grid">
+        <div class="card" style="text-align: center; padding: 48px;">
+          <p style="color: var(--text-muted);">Loading verified members from Nostr relays...</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== VERIFY VIEW ====== -->
+  <div class="view" id="view-verify">
+    <section class="section" style="padding-top: 140px; max-width: 500px;">
+      <div class="section-header">
+        <h2>Verify a Member</h2>
+        <p>Check if someone is really who they claim to be.</p>
+      </div>
+
+      <div class="card" style="padding: 32px;">
+        <div class="form-group">
+          <label class="form-label">Nostr Public Key or NIP-05</label>
+          <input type="text" class="input" id="input-verify" placeholder="npub1... or user@lacrypta.ar">
+        </div>
+        <button class="btn btn-accent" style="width: 100%; justify-content: center; margin-top: 8px;" onclick="verifyMember()">
+          Verify Identity
+        </button>
+      </div>
+
+      <div id="verify-result" style="margin-top: 24px;"></div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      Built with ⚡ for <a href="https://lacrypta.ar" target="_blank">La Crypta</a> —
+      Hackathon Abril 2026 — Nostr Identity & Social
+    </p>
+    <p style="margin-top: 8px; font-size: 12px;">
+      NIP-05 + NIP-58 + NIP-57 | Muerte a los come empanadas 💀🥟
+    </p>
+  </footer>
+
+  <script type="module">
+    // ============================================
+    // NOSTR IDENTITY HUB - Main Application
+    // ============================================
+
+    // --- SPA Navigation ---
+    window.showView = function(viewId) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    // --- Toast Notifications ---
+    window.showToast = function(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    };
+
+    // --- Profile Creation (placeholder) ---
+    window.createProfile = async function() {
+      const npub = document.getElementById('input-npub').value.trim();
+      const name = document.getElementById('input-name').value.trim();
+      const nip05 = document.getElementById('input-nip05').value.trim();
+
+      if (!npub || !name || !nip05) {
+        showToast('Please fill all fields', 'error');
+        return;
+      }
+
+      showToast('Profile creation coming soon! Building NIP-05 + NIP-58 backend...');
+    };
+
+    // --- Verification (placeholder) ---
+    window.verifyMember = async function() {
+      const input = document.getElementById('input-verify').value.trim();
+      if (!input) {
+        showToast('Enter a npub or NIP-05 address', 'error');
+        return;
+      }
+
+      showToast('Verification system coming soon! Connecting to Nostr relays...');
+    };
+
+    // --- Directory Filter ---
+    window.filterDirectory = function() {
+      // Placeholder for search functionality
+    };
+
+    // --- Init ---
+    console.log('⚡ Nostr Identity Hub v1.0.0 — La Crypta Hackathon Abril 2026');
+  </script>
+</body>
+</html>
