@@ -637,8 +637,8 @@
   <div class="view active" id="view-home">
     <section class="hero">
       <div class="hero-badge">
-        <span>⚡</span>
-        <span>Hackathon Abril 2026 — La Crypta</span>
+        <span>â¡</span>
+        <span>Hackathon Abril 2026 â La Crypta</span>
       </div>
 
       <h1>
@@ -652,7 +652,7 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn btn-accent" onclick="showView('create')">Create Profile ↗</button>
+        <button class="btn btn-accent" onclick="showView('create')">Create Profile â</button>
         <button class="btn" onclick="showView('directory')">Browse Directory</button>
       </div>
 
@@ -681,23 +681,23 @@
 
       <div class="comparison">
         <div class="comparison-col danger">
-          <h3>❌ Without Identity Hub</h3>
+          <h3>â Without Identity Hub</h3>
           <ul>
             <li>Impersonators go undetected</li>
             <li>Scammers change name slightly and blend in</li>
             <li>New members can't tell who's legit</li>
             <li>No way to prove real contributions</li>
-            <li>Come empanadas walk free 🥟</li>
+            <li>Come empanadas walk free ð¥</li>
           </ul>
         </div>
         <div class="comparison-col success">
-          <h3>✅ With Identity Hub</h3>
+          <h3>â With Identity Hub</h3>
           <ul>
             <li>NIP-05 verified identity (user@lacrypta.ar)</li>
             <li>Public badge history on Nostr relays</li>
             <li>Reputation score based on real activity</li>
             <li>Instant verification of any member</li>
-            <li>Come empanadas = 0 badges, exposed 🚫</li>
+            <li>Come empanadas = 0 badges, exposed ð«</li>
           </ul>
         </div>
       </div>
@@ -712,32 +712,32 @@
 
       <div class="cards-grid">
         <div class="card">
-          <div class="card-icon">📍</div>
+          <div class="card-icon">ð</div>
           <h3>Attendance</h3>
           <p>Proof of attendance at La Crypta events. Linked to POA-HDMP system via NIP-58.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🎤</div>
+          <div class="card-icon">ð¤</div>
           <h3>Speaker</h3>
           <p>Given a talk or workshop. Verified by event organizers with badge issuance.</p>
         </div>
         <div class="card">
-          <div class="card-icon">👨‍💻</div>
+          <div class="card-icon">ð¨âð»</div>
           <h3>Contributor</h3>
           <p>Built something for the community. Code, content, tools, or infrastructure.</p>
         </div>
         <div class="card">
-          <div class="card-icon">⚡</div>
+          <div class="card-icon">â¡</div>
           <h3>Donor</h3>
           <p>Supported La Crypta via Lightning zaps. Verified through NIP-57 receipts.</p>
         </div>
         <div class="card">
-          <div class="card-icon">✅</div>
+          <div class="card-icon">â</div>
           <h3>Verified Member</h3>
           <p>Identity confirmed through NIP-05 DNS verification. The base of trust.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🏆</div>
+          <div class="card-icon">ð</div>
           <h3>Core Member</h3>
           <p>Long-term contributor with multiple badges. The real cypherpunk jungle animals.</p>
         </div>
@@ -753,18 +753,18 @@
 
       <div class="profile-card">
         <div class="profile-header">
-          <div class="profile-avatar">🦍</div>
+          <div class="profile-avatar">ð¦</div>
           <div>
             <div class="profile-name">Agus Gorilla</div>
-            <div class="profile-nip05">agus@lacrypta.ar ✓</div>
+            <div class="profile-nip05">agus@lacrypta.ar â</div>
           </div>
         </div>
         <div class="profile-badges">
-          <span class="profile-badge">📍 12 Events</span>
-          <span class="profile-badge">🎤 Speaker</span>
-          <span class="profile-badge">👨‍💻 Contributor</span>
-          <span class="profile-badge">⚡ Donor</span>
-          <span class="profile-badge">🏆 Core</span>
+          <span class="profile-badge">ð 12 Events</span>
+          <span class="profile-badge">ð¤ Speaker</span>
+          <span class="profile-badge">ð¨âð» Contributor</span>
+          <span class="profile-badge">â¡ Donor</span>
+          <span class="profile-badge">ð Core</span>
         </div>
         <div class="reputation-bar">
           <div class="reputation-label">
@@ -777,6 +777,116 @@
         </div>
       </div>
     </section>
+
+    <!-- DISCORD INTEGRATION IDEAS -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(180, 249, 83, 0.05) 0%, transparent 100%); border-radius: 24px; margin: 80px 24px;">
+      <div class="section-header">
+        <h2>💬 Discord Integration Ideas</h2>
+        <p>Extend identity verification and reputation badges to Discord. Bringing trust to the community.</p>
+      </div>
+
+      <!-- OPCION 1: BOT -->
+      <div class="cards-grid" style="margin-bottom: 40px;">
+        <div class="card" style="border: 2px solid var(--accent); position: relative;">
+          <div style="position: absolute; top: -12px; left: 16px; background: var(--bg-primary); padding: 0 8px; color: var(--accent); font-weight: 700; font-size: 12px;">OPCIÓN 1</div>
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent); font-size: 28px;">🤖</div>
+          <h3>Discord Bot Verification</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Auto-verify users with Nostr identity. Commands to check profiles and badges in real-time.</p>
+          <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); font-family: monospace; margin-bottom: 12px;">
+            /verify satoshi@lacrypta.ar<br>
+            /profile @user<br>
+            /check-scammer &lt;pubkey&gt;
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="profile-badge">⚡ Instant verification</span>
+            <span class="profile-badge">🏅 Auto-role assignment</span>
+            <span class="profile-badge">📊 Live reputation</span>
+          </div>
+        </div>
+
+        <div class="card" style="border: 2px solid rgba(180, 249, 83, 0.3);">
+          <div style="position: absolute; top: -12px; left: 16px; background: var(--bg-primary); padding: 0 8px; color: var(--text-muted); font-weight: 700; font-size: 12px;">OPCIÓN 2</div>
+          <div class="card-icon" style="background: rgba(180, 249, 83, 0.1);">🔗</div>
+          <h3>Webhook Auto-Sync</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Badge changes sync to Discord instantly. User gana badge → Bot updates roles automatically.</p>
+          <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            🎤 Speaker badge gained<br>
+            ↓<br>
+            @user gets role "Speaker" in Discord
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="profile-badge">⚙️ Real-time sync</span>
+            <span class="profile-badge">🎯 No manual updates</span>
+            <span class="profile-badge">✨ Seamless UX</span>
+          </div>
+        </div>
+
+        <div class="card" style="border: 2px solid rgba(180, 249, 83, 0.3);">
+          <div style="position: absolute; top: -12px; left: 16px; background: var(--bg-primary); padding: 0 8px; color: var(--text-muted); font-weight: 700; font-size: 12px;">OPCIÓN 3</div>
+          <div class="card-icon" style="background: rgba(180, 249, 83, 0.1);">🔐</div>
+          <h3>Verification on Entry</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">New members must verify their Nostr identity to access the server. Gatekeeping against scammers.</p>
+          <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            New user joins → Modal: Verify identity<br>
+            ✅ Has badges → Full access<br>
+            ⚠️ No badges → Read-only
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="profile-badge">🛡️ Scammer protection</span>
+            <span class="profile-badge">📜 Verification required</span>
+            <span class="profile-badge">⚠️ Come empanadas blocked</span>
+          </div>
+        </div>
+
+        <div class="card" style="border: 2px solid rgba(180, 249, 83, 0.3);">
+          <div style="position: absolute; top: -12px; left: 16px; background: var(--bg-primary); padding: 0 8px; color: var(--text-muted); font-weight: 700; font-size: 12px;">OPCIÓN 4</div>
+          <div class="card-icon" style="background: rgba(180, 249, 83, 0.1);">📊</div>
+          <h3>Reputation Leaderboard</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Public channel showing top members by reputation. Visual proof of trusted community leaders.</p>
+          <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            #reputation-leaderboard<br>
+            🥇 Agus: 92pts (5 badges)<br>
+            🥈 Mariano: 78pts (3 badges)<br>
+            ⚠️ Unverified (0 badges)
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="profile-badge">🏆 Top members visible</span>
+            <span class="profile-badge">📈 Live ranking</span>
+            <span class="profile-badge">🎯 Gamification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPLEMENTATION ROADMAP -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-top: 32px;">
+        <h3 style="color: var(--accent); margin-bottom: 16px; font-size: 16px;">🗺️ Implementation Roadmap</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <div style="padding: 16px; background: var(--bg-elevated); border-radius: 12px; border-left: 3px solid var(--accent);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 8px;">Phase 1: Bot (Week 1)</div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Implement basic Discord bot with /verify and /profile commands</div>
+          </div>
+          <div style="padding: 16px; background: var(--bg-elevated); border-radius: 12px; border-left: 3px solid var(--warning);">
+            <div style="color: var(--warning); font-weight: 700; margin-bottom: 8px;">Phase 2: Webhooks (Week 2)</div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Real-time sync of badges to Discord roles</div>
+          </div>
+          <div style="padding: 16px; background: var(--bg-elevated); border-radius: 12px; border-left: 3px solid var(--success);">
+            <div style="color: var(--success); font-weight: 700; margin-bottom: 8px;">Phase 3: Gatekeeping (Week 2)</div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Entry verification + member restrictions</div>
+          </div>
+          <div style="padding: 16px; background: var(--bg-elevated); border-radius: 12px; border-left: 3px solid var(--accent);">
+            <div style="color: var(--accent); font-weight: 700; margin-bottom: 8px;">Phase 4: Leaderboard (Week 3)</div>
+            <div style="font-size: 13px; color: var(--text-secondary);">Auto-updating reputation leaderboard channel</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 32px;">
+        <p style="font-size: 14px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+          💡 <strong>Strategy:</strong> Start with Opción 1 + 3 for maximum impact. Bot gives instant verification, gatekeeping protects against scammers. Add 2 + 4 later for complete Discord integration.
+        </p>
+      </div>
+    </section>
+
   </div>
 
   <!-- ====== CREATE PROFILE VIEW ====== -->
@@ -804,7 +914,7 @@
           </div>
         </div>
         <button class="btn btn-accent" style="width: 100%; justify-content: center; margin-top: 16px;" onclick="createProfile()">
-          Register Identity ↗
+          Register Identity â
         </button>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; text-align: center;">
           Your profile will be published to Nostr relays and verified via NIP-05.
@@ -858,11 +968,11 @@
   <!-- FOOTER -->
   <footer class="footer">
     <p>
-      Built with ⚡ for <a href="https://lacrypta.ar" target="_blank">La Crypta</a> —
-      Hackathon Abril 2026 — Nostr Identity & Social
+      Built with â¡ for <a href="https://lacrypta.ar" target="_blank">La Crypta</a> â
+      Hackathon Abril 2026 â Nostr Identity & Social
     </p>
     <p style="margin-top: 8px; font-size: 12px;">
-      NIP-05 + NIP-58 + NIP-57 | Muerte a los come empanadas 💀🥟
+      NIP-05 + NIP-58 + NIP-57 | Muerte a los come empanadas ðð¥
     </p>
   </footer>
 
@@ -922,7 +1032,7 @@
     };
 
     // --- Init ---
-    console.log('⚡ Nostr Identity Hub v1.0.0 — La Crypta Hackathon Abril 2026');
+    console.log('â¡ Nostr Identity Hub v1.0.0 â La Crypta Hackathon Abril 2026');
   </script>
 </body>
 </html>
