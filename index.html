@@ -352,13 +352,58 @@
     }
 
     /* ---- PROFILE CARD (sample) ---- */
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     .profile-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: 32px;
-      max-width: 400px;
-      margin: 0 auto;
+      padding: 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .profile-card.spammer {
+      border: 2px solid #ff4444;
+      background: linear-gradient(135deg, rgba(255, 68, 68, 0.08) 0%, var(--bg-card) 100%);
+    }
+
+    .profile-card.spammer:hover {
+      border-color: #ff6666;
+    }
+
+    .spammer-tag {
+      display: inline-block;
+      background: #ff4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      animation: pulse-red 2s infinite;
+    }
+
+    @keyframes pulse-red {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .reputation-low .reputation-fill {
+      background: #ff4444 !important;
     }
 
     .profile-header {
@@ -744,37 +789,221 @@
       </div>
     </section>
 
-    <!-- SAMPLE PROFILE -->
+    <!-- COMMUNITY PROFILES -->
     <section class="section">
       <div class="section-header">
         <h2>Profile Preview</h2>
-        <p>This is how a verified community member looks.</p>
+        <p>Members of the community with different reputation levels. Spot the scammer.</p>
       </div>
 
-      <div class="profile-card">
-        <div class="profile-header">
-          <div class="profile-avatar">🦍</div>
-          <div>
-            <div class="profile-name">Agus Gorilla</div>
-            <div class="profile-nip05">agus@lacrypta.ar ✓</div>
+      <div class="profiles-grid">
+
+        <!-- FIERILLO - Core Member -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🔥</div>
+            <div>
+              <div class="profile-name">Fierillo</div>
+              <div class="profile-nip05">fierillo@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 24 Events</span>
+            <span class="profile-badge">🎤 Speaker</span>
+            <span class="profile-badge">👨‍💻 Contributor</span>
+            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">🏆 Core</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>97/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 97%"></div>
+            </div>
           </div>
         </div>
-        <div class="profile-badges">
-          <span class="profile-badge">📍 12 Events</span>
-          <span class="profile-badge">🎤 Speaker</span>
-          <span class="profile-badge">👨‍💻 Contributor</span>
-          <span class="profile-badge">⚡ Donor</span>
-          <span class="profile-badge">🏆 Core</span>
-        </div>
-        <div class="reputation-bar">
-          <div class="reputation-label">
-            <span>Reputation</span>
-            <span>92/100</span>
+
+        <!-- NEGR0 - Verified + Donor -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🐺</div>
+            <div>
+              <div class="profile-name">Negr0</div>
+              <div class="profile-nip05">negr0@lacrypta.ar ✓</div>
+            </div>
           </div>
-          <div class="reputation-track">
-            <div class="reputation-fill" style="width: 92%"></div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 18 Events</span>
+            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">👨‍💻 Contributor</span>
+            <span class="profile-badge">🏆 Core</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>88/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 88%"></div>
+            </div>
           </div>
         </div>
+
+        <!-- LAI - Speaker + Events -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🦊</div>
+            <div>
+              <div class="profile-name">Lai</div>
+              <div class="profile-nip05">lai@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 15 Events</span>
+            <span class="profile-badge">🎤 Speaker</span>
+            <span class="profile-badge">✅ Verified</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>78/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 78%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOOKER - Contributor -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">👁️</div>
+            <div>
+              <div class="profile-name">Looker</div>
+              <div class="profile-nip05">looker@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 9 Events</span>
+            <span class="profile-badge">👨‍💻 Contributor</span>
+            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">✅ Verified</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>72/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 72%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUERICAVERGA - Donor newcomer -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🌶️</div>
+            <div>
+              <div class="profile-name">QuericaVerga</div>
+              <div class="profile-nip05">quericaverga@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 6 Events</span>
+            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">✅ Verified</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>55/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 55%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EL BERENJENA - New member -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🍆</div>
+            <div>
+              <div class="profile-name">El Berenjena</div>
+              <div class="profile-nip05">berenjena@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 3 Events</span>
+            <span class="profile-badge">✅ Verified</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>38/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 38%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AGUS GORILLA - OG Core -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">🦍</div>
+            <div>
+              <div class="profile-name">Agus Gorilla</div>
+              <div class="profile-nip05">agus@lacrypta.ar ✓</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge">📍 12 Events</span>
+            <span class="profile-badge">🎤 Speaker</span>
+            <span class="profile-badge">👨‍💻 Contributor</span>
+            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">🏆 Core</span>
+          </div>
+          <div class="reputation-bar">
+            <div class="reputation-label">
+              <span>Reputation</span>
+              <span>92/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 92%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAPIJA DEL NEGR0 - SPAMMER -->
+        <div class="profile-card spammer">
+          <div class="spammer-tag">⚠️ SPAMMER DETECTED</div>
+          <div class="profile-header">
+            <div class="profile-avatar" style="background: rgba(255,68,68,0.2);">🚫</div>
+            <div>
+              <div class="profile-name" style="color: #ff6666;">Lapija del Negr0</div>
+              <div class="profile-nip05" style="color: #ff6666; text-decoration: line-through;">not-verified@fake.com ✗</div>
+            </div>
+          </div>
+          <div class="profile-badges">
+            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚫 0 Events</span>
+            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚨 No NIP-05</span>
+            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🤡 Come empanadas</span>
+          </div>
+          <div class="reputation-bar reputation-low">
+            <div class="reputation-label">
+              <span style="color: #ff6666;">Reputation</span>
+              <span style="color: #ff6666;">3/100</span>
+            </div>
+            <div class="reputation-track">
+              <div class="reputation-fill" style="width: 3%"></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
