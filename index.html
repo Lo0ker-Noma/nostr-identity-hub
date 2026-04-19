@@ -699,6 +699,13 @@
       <div class="hero-actions">
         <button class="btn btn-accent" onclick="showView('create')">Create Profile ↗</button>
         <button class="btn" onclick="showView('directory')">Browse Directory</button>
+        <a href="#security-section" class="btn" style="text-decoration: none;">🛡️ Security</a>
+      </div>
+
+      <!-- Pentest badge -->
+      <div style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 6px 14px; background: var(--accent-dim, rgba(180, 249, 83, 0.1)); border: 1px solid var(--accent); border-radius: 999px; font-size: 12px; color: var(--accent); font-weight: 600;">
+        <span>🛡️</span>
+        <span>Pentested · 10/10 attacks blocked · NIP-98 enforced</span>
       </div>
 
       <div class="stats-bar">
@@ -1113,6 +1120,97 @@
         <p style="font-size: 14px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
           💡 <strong>Strategy:</strong> Start with Opción 1 + 3 for maximum impact. Bot gives instant verification, gatekeeping protects against scammers. Add 2 + 4 later for complete Discord integration.
         </p>
+      </div>
+    </section>
+
+    <!-- ====== SECURITY & PENTEST ====== -->
+    <section class="section" id="security-section" style="background: linear-gradient(135deg, rgba(180, 249, 83, 0.04) 0%, transparent 100%); border-radius: 24px; margin: 80px 24px; padding-top: 48px; padding-bottom: 48px;">
+      <div class="section-header">
+        <h2>🛡️ Security & Pentest</h2>
+        <p>Identity infrastructure is only as trustworthy as its weakest endpoint. This project was pentested before submission — every CRITICAL and HIGH finding was closed.</p>
+      </div>
+
+      <!-- Headline stats -->
+      <div class="cards-grid" style="margin-bottom: 32px;">
+        <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+          <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">10/10</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Attack scenarios blocked</div>
+        </div>
+        <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+          <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">0</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Critical / High unresolved</div>
+        </div>
+        <div class="card" style="text-align: center; border: 2px solid var(--accent);">
+          <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">NIP-98</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Mandatory on write endpoints</div>
+        </div>
+      </div>
+
+      <!-- Attack matrix -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 32px; overflow-x: auto;">
+        <h3 style="color: var(--accent); margin-bottom: 16px; font-size: 16px;">🧪 Pentest results — register endpoint</h3>
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px;">
+          <thead>
+            <tr style="color: var(--text-muted); text-align: left; border-bottom: 1px solid var(--border);">
+              <th style="padding: 8px 10px; font-weight: 600;">#</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Attack</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Result</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Status</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--text-secondary);">
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A1</td><td style="padding: 8px 10px;">Register without Authorization</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A2</td><td style="padding: 8px 10px;">Identity hijack (auth pubkey ≠ body.pubkey)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A3</td><td style="padding: 8px 10px;">Body tampering after signing</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A4</td><td style="padding: 8px 10px;">Replay (event older than 60s)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A5</td><td style="padding: 8px 10px;">Claim reserved name (“admin”)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A6</td><td style="padding: 8px 10px;">Oversized displayName (200 chars)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A7</td><td style="padding: 8px 10px;">Form-encoded CSRF (simple request)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">415</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A8</td><td style="padding: 8px 10px;">IP flood (12 rapid requests)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">429</td><td style="padding: 8px 10px; color: var(--accent);">✓ throttled</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A9</td><td style="padding: 8px 10px;">Name starts with “.” (regex bypass)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr><td style="padding: 8px 10px;">A10</td><td style="padding: 8px 10px;">Malformed pubkey (not hex-64)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Controls implemented -->
+      <div class="cards-grid" style="margin-bottom: 32px;">
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🔐</div>
+          <h3>NIP-98 Auth</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">Kind 27235 signed event required on <code>POST /api/register</code>. Server checks signature, URL match, method match, body hash, ±60s replay window, and that <code>event.pubkey === body.pubkey</code>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">⏱️</div>
+          <h3>Rate limiting</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">Sliding window: <strong>10 reqs / 10 min per IP</strong> and <strong>3 registrations / hour per pubkey</strong>. Kills automated squatting.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🚫</div>
+          <h3>Reserved names</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">24 protected handles: <code>admin</code>, <code>root</code>, <code>lacrypta</code>, <code>satoshi</code>, <code>support</code>, <code>api</code>… full list in SECURITY.md.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">📏</div>
+          <h3>Input caps</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">Strict regex on name, 64-char hex pubkey, displayName ≤ 64 chars, body ≤ 2 KB. Content-Type must be <code>application/json</code>.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🛡️</div>
+          <h3>HTTP hardening</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">CSP, HSTS (2y preload), X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy, Permissions-Policy. <code>Cache-Control: no-store</code> on every API response.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">📦</div>
+          <h3>Supply chain</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;"><code>nostr-tools</code> pinned to exact <code>2.7.2</code> (no caret). ADMIN_KEY compared with <code>crypto.timingSafeEqual</code>. Planned: bundle crypto deps with Vite.</p>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div style="text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="./PENTEST.md" target="_blank" class="btn btn-accent" style="padding: 12px 20px;">📄 Read full pentest</a>
+        <a href="./SECURITY.md" target="_blank" class="btn" style="padding: 12px 20px;">🔒 Security policy</a>
       </div>
     </section>
   </div>
