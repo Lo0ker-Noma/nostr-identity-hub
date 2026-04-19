@@ -1241,13 +1241,16 @@
     // La Crypta Hackathon · April 2026
     // ============================================
 
-    // nostr-tools from esm.sh so we don't need a build step
+    // nostr-tools from esm.sh so we don't need a build step.
+    // NOTE: pinned to exact version. For full supply-chain safety, swap to
+    // a Vite-bundled import served from same origin.
     import {
       generateSecretKey,
       getPublicKey,
-    } from 'https://esm.sh/nostr-tools@2.7.0/pure';
+      finalizeEvent,
+    } from 'https://esm.sh/nostr-tools@2.7.2/pure';
     import { npubEncode, nsecEncode, decode as nip19decode }
-      from 'https://esm.sh/nostr-tools@2.7.0/nip19';
+      from 'https://esm.sh/nostr-tools@2.7.2/nip19';
 
     const LS_PROFILE_KEY = 'nostr-identity-hub.profile.v1';
     const LS_DIRECTORY_KEY = 'nostr-identity-hub.directory.v1';
@@ -1332,6 +1335,50 @@
     // --- Profile Creation ---
     let lastGeneratedNsec = null;
 
+    // Match the server's stricter regex: alnum at start/end, _ - . in the middle
+    const NIP05_RE = /^[a-z0-9](?:[a-z0-9_\-.]{0,30}[a-z0-9])?$/;
+
+    // SHA-256 hex via WebCrypto (matches NIP-98 "payload" tag)
+    async function sha256Hex(str) {
+      const buf = new TextEncoder().encode(str);
+      const digest = await crypto.subtle.digest('SHA-256', buf);
+      return Array.from(new Uint8Array(digest))
+        .map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    /**
+     * Build a NIP-98 Authorization header value.
+     * Caller passes either a Uint8Array secret key (auto-sign) or `null`
+     * (in which case we fall back to window.nostr from a NIP-07 extension).
+     */
+    async function buildNip98Header({ sk, method, url, body }) {
+      const payloadHash = body && body.length > 0 ? await sha256Hex(body) : null;
+      const tags = [
+        ['u', url],
+        ['method', method.toUpperCase()],
+      ];
+      if (payloadHash) tags.push(['payload', payloadHash]);
+
+      const template = {
+        kind: 27235,
+        created_at: Math.floor(Date.now() / 1000),
+        tags,
+        content: '',
+      };
+
+      let signed;
+      if (sk) {
+        signed = finalizeEvent(template, sk);
+      } else if (window.nostr && typeof window.nostr.signEvent === 'function') {
+        signed = await window.nostr.signEvent(template);
+      } else {
+        throw new Error('No key available to sign — install Alby/nos2x or generate a new identity');
+      }
+
+      const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(signed))));
+      return `Nostr ${b64}`;
+    }
+
     window.createProfile = async function() {
       const btn = document.getElementById('btn-create');
       const displayName = document.getElementById('input-name').value.trim();
@@ -1339,14 +1386,16 @@
 
       // Validation
       if (!displayName) return showToast('Display name is required', 'error');
+      if (displayName.length > 64) return showToast('Display name max 64 chars', 'error');
       if (!nip05Name) return showToast('NIP-05 username is required', 'error');
-      if (!/^[a-z0-9_\-.]{2,32}$/.test(nip05Name)) {
-        return showToast('NIP-05: 2-32 chars, a-z 0-9 _ - .', 'error');
+      if (!NIP05_RE.test(nip05Name)) {
+        return showToast('Username: 2-32 chars, alnum, with _ - . in the middle', 'error');
       }
 
       let pubkeyHex;
       let nsec = null;
       let npub;
+      let secretKey = null; // Uint8Array, only set in generate mode
 
       if (createMode === 'existing') {
         const npubInput = document.getElementById('input-npub').value.trim();
@@ -1354,12 +1403,16 @@
         pubkeyHex = decodeNpub(npubInput);
         if (!pubkeyHex) return showToast('Invalid npub — check the prefix and length', 'error');
         npub = npubInput;
+        // No sk → must use NIP-07 extension to sign
+        if (!window.nostr || typeof window.nostr.signEvent !== 'function') {
+          return showToast('To register an existing npub you need a NIP-07 extension (Alby, nos2x). Or pick Generate new.', 'error');
+        }
       } else {
         // Generate a new keypair
-        const sk = generateSecretKey(); // Uint8Array
-        pubkeyHex = getPublicKey(sk);
+        secretKey = generateSecretKey(); // Uint8Array
+        pubkeyHex = getPublicKey(secretKey);
         npub = npubEncode(pubkeyHex);
-        nsec = nsecEncode(sk);
+        nsec = nsecEncode(secretKey);
       }
 
       btn.disabled = true;
@@ -1367,14 +1420,24 @@
       btn.innerHTML = 'Registering…';
 
       try {
+        const bodyObj = { name: nip05Name, pubkey: pubkeyHex, displayName };
+        const body = JSON.stringify(bodyObj);
+        const url = new URL('/api/register', window.location.origin).toString();
+
+        const auth = await buildNip98Header({
+          sk: secretKey,
+          method: 'POST',
+          url,
+          body,
+        });
+
         const res = await fetch('/api/register', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: nip05Name,
-            pubkey: pubkeyHex,
-            displayName,
-          }),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': auth,
+          },
+          body,
         });
 
         const data = await res.json().catch(() => ({}));
@@ -1438,21 +1501,31 @@
         let nip05Name = null;
         let nip05Full = null;
 
+        const DOMAIN_RE = /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)+$/;
+
         if (input.startsWith('npub1')) {
           pubkey = decodeNpub(input);
           if (!pubkey) throw new Error('Invalid npub');
         } else if (input.includes('@')) {
-          const [name, domain] = input.split('@');
-          nip05Name = name.toLowerCase();
-          nip05Full = input.toLowerCase();
-          const url = domain.toLowerCase() === 'lacrypta.ar'
+          // Strict split: exactly one "@"
+          const parts = input.split('@');
+          if (parts.length !== 2) throw new Error('Input must be user@domain');
+          const rawName = parts[0].toLowerCase();
+          const rawDomain = parts[1].toLowerCase();
+          if (!NIP05_RE.test(rawName)) throw new Error('Invalid NIP-05 username');
+          if (!DOMAIN_RE.test(rawDomain)) throw new Error('Invalid NIP-05 domain');
+          nip05Name = rawName;
+          nip05Full = `${rawName}@${rawDomain}`;
+          const url = rawDomain === 'lacrypta.ar' || rawDomain === window.location.hostname
             ? `/.well-known/nostr.json?name=${encodeURIComponent(nip05Name)}`
-            : `https://${domain}/.well-known/nostr.json?name=${encodeURIComponent(nip05Name)}`;
+            : `https://${rawDomain}/.well-known/nostr.json?name=${encodeURIComponent(nip05Name)}`;
           const r = await fetch(url);
           if (!r.ok) throw new Error(`NIP-05 host returned ${r.status}`);
           const j = await r.json();
-          pubkey = j.names && j.names[nip05Name];
-          if (!pubkey) throw new Error(`No NIP-05 record for "${input}"`);
+          pubkey = j && j.names && j.names[nip05Name];
+          if (typeof pubkey !== 'string' || !/^[0-9a-f]{64}$/.test(pubkey)) {
+            throw new Error(`No valid NIP-05 record for "${nip05Full}"`);
+          }
         } else {
           throw new Error('Input must be npub1… or user@domain');
         }
@@ -1505,10 +1578,14 @@
         const r = await fetch('/.well-known/nostr.json');
         if (r.ok) {
           const j = await r.json();
-          server = Object.entries(j.names || {}).map(([name, pubkey]) => ({
-            name, nip05Name: name, pubkey,
-            nip05: `${name}@lacrypta.ar`, createdAt: 0,
-          }));
+          server = Object.entries(j.names || {})
+            .filter(([name, pubkey]) =>
+              NIP05_RE.test(name) && typeof pubkey === 'string' && /^[0-9a-f]{64}$/.test(pubkey)
+            )
+            .map(([name, pubkey]) => ({
+              name, nip05Name: name, pubkey,
+              nip05: `${name}@lacrypta.ar`, createdAt: 0,
+            }));
         }
       } catch (e) { console.warn('[directory] /.well-known fetch failed', e); }
 

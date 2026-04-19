@@ -17,6 +17,15 @@
 
 import { getPublicKey, finalizeEvent } from 'nostr-tools/pure';
 import { bytesToHex, hexToBytes } from '@noble/hashes/utils';
+import crypto from 'crypto';
+
+function timingSafeEqualStr(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const ab = Buffer.from(a, 'utf-8');
+  const bb = Buffer.from(b, 'utf-8');
+  if (ab.length !== bb.length) return false;
+  try { return crypto.timingSafeEqual(ab, bb); } catch { return false; }
+}
 
 const BADGE_TYPES = {
   attendance: { name: 'Event Attendee', description: 'Attended a La Crypta event', image: '' },
@@ -66,8 +75,9 @@ async function getBadges(req, res) {
 async function issueBadge(req, res) {
   const { recipientPubkey, badgeType, eventId, adminKey } = req.body || {};
 
-  // Verify admin authorization
-  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+  // Verify admin authorization (timing-safe + refuses when no key configured)
+  const expected = process.env.ADMIN_KEY;
+  if (!expected || !adminKey || !timingSafeEqualStr(String(adminKey), String(expected))) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
