@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Nostr Identity Hub | La Crypta</title>
-  <meta name="description" content="Verifiable Nostr identities & reputation badges for La Crypta community. Muerte a los scammers.">
+  <meta name="description" content="Identidades Nostr verificables y badges de reputación para la comunidad de La Crypta. Muerte a los scammers.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -670,8 +670,8 @@
       <span>identity hub</span>
     </a>
     <div class="navbar-actions">
-      <button class="btn btn-sm" onclick="showView('directory')">Directory</button>
-      <button class="btn btn-sm btn-accent" onclick="showView('verify')" id="nav-verify-btn">Verify</button>
+      <button class="btn btn-sm" onclick="showView('directory')">Directorio</button>
+      <button class="btn btn-sm btn-accent" onclick="showView('verify')" id="nav-verify-btn">Verificar</button>
     </div>
   </nav>
 
@@ -687,31 +687,31 @@
       </div>
 
       <h1>
-        Verify <span class="accent">identity</span>,<br>
-        kill the <span class="accent">scammers</span>
+        Verificá la <span class="accent">identidad</span>,<br>
+        matá a los <span class="accent">scammers</span>
       </h1>
 
       <p>
-        Perfiles verificables con badges de reputacion sobre Nostr.
-        Nunca mas un come empanadas se hace pasar por alguien de la comunidad.
+        Perfiles verificables con badges de reputación sobre Nostr.
+        Nunca más un come empanadas se hace pasar por alguien de la comunidad.
       </p>
 
       <div class="hero-actions">
-        <button class="btn btn-accent" onclick="showView('create')">Create Profile ↗</button>
-        <button class="btn" onclick="showView('directory')">Browse Directory</button>
-        <a href="#security-section" class="btn" style="text-decoration: none;">🛡️ Security</a>
+        <button class="btn btn-accent" onclick="showView('create')">Crear perfil ↗</button>
+        <button class="btn" onclick="showView('directory')">Explorar directorio</button>
+        <a href="#security-section" class="btn" style="text-decoration: none;">🛡️ Seguridad</a>
       </div>
 
       <!-- Pentest badge -->
       <div style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 6px 14px; background: var(--accent-dim, rgba(180, 249, 83, 0.1)); border: 1px solid var(--accent); border-radius: 999px; font-size: 12px; color: var(--accent); font-weight: 600;">
         <span>🛡️</span>
-        <span>Pentested · 10/10 attacks blocked · NIP-98 enforced</span>
+        <span>Auditado · 10/10 ataques bloqueados · NIP-98 obligatorio</span>
       </div>
 
       <div class="stats-bar">
         <div class="stat">
           <div class="stat-value" id="stat-verified">0</div>
-          <div class="stat-label">Verified</div>
+          <div class="stat-label">Verificados</div>
         </div>
         <div class="stat">
           <div class="stat-value" id="stat-badges">0</div>
@@ -719,7 +719,7 @@
         </div>
         <div class="stat">
           <div class="stat-value" id="stat-events">0</div>
-          <div class="stat-label">Events</div>
+          <div class="stat-label">Eventos</div>
         </div>
       </div>
     </section>
@@ -727,29 +727,29 @@
     <!-- PROBLEM / SOLUTION -->
     <section class="section">
       <div class="section-header">
-        <h2>The Problem We Solve</h2>
-        <p>Real scams happen in our community. We stop them with verifiable Nostr identity.</p>
+        <h2>El problema que resolvemos</h2>
+        <p>En nuestra comunidad pasan scams reales. Los frenamos con identidad Nostr verificable.</p>
       </div>
 
       <div class="comparison">
         <div class="comparison-col danger">
-          <h3>❌ Without Identity Hub</h3>
+          <h3>❌ Sin Identity Hub</h3>
           <ul>
-            <li>Impersonators go undetected</li>
-            <li>Scammers change name slightly and blend in</li>
-            <li>New members can't tell who's legit</li>
-            <li>No way to prove real contributions</li>
-            <li>Come empanadas walk free 🥟</li>
+            <li>Los impostores pasan desapercibidos</li>
+            <li>Los scammers cambian el nombre un poquito y se camuflan</li>
+            <li>Los nuevos miembros no saben quién es legítimo</li>
+            <li>No hay forma de probar contribuciones reales</li>
+            <li>Los come empanadas andan sueltos 🥟</li>
           </ul>
         </div>
         <div class="comparison-col success">
-          <h3>✅ With Identity Hub</h3>
+          <h3>✅ Con Identity Hub</h3>
           <ul>
-            <li>NIP-05 verified identity (user@lacrypta.ar)</li>
-            <li>Public badge history on Nostr relays</li>
-            <li>Reputation score based on real activity</li>
-            <li>Instant verification of any member</li>
-            <li>Come empanadas = 0 badges, exposed 🚫</li>
+            <li>Identidad verificada con NIP-05 (usuario@lacrypta.ar)</li>
+            <li>Historial público de badges en los relays de Nostr</li>
+            <li>Puntaje de reputación basado en actividad real</li>
+            <li>Verificación instantánea de cualquier miembro</li>
+            <li>Come empanadas = 0 badges, al descubierto 🚫</li>
           </ul>
         </div>
       </div>
@@ -758,40 +758,40 @@
     <!-- BADGE TYPES -->
     <section class="section">
       <div class="section-header">
-        <h2>Reputation Badges</h2>
-        <p>Earn badges through real participation. Build trust one event at a time.</p>
+        <h2>Badges de reputación</h2>
+        <p>Ganá badges con participación real. Construí confianza un evento a la vez.</p>
       </div>
 
       <div class="cards-grid">
         <div class="card">
           <div class="card-icon">📍</div>
-          <h3>Attendance</h3>
-          <p>Proof of attendance at La Crypta events. Linked to POA-HDMP system via NIP-58.</p>
+          <h3>Asistencia</h3>
+          <p>Prueba de asistencia a eventos de La Crypta. Vinculada al sistema POA-HDMP vía NIP-58.</p>
         </div>
         <div class="card">
           <div class="card-icon">🎤</div>
-          <h3>Speaker</h3>
-          <p>Given a talk or workshop. Verified by event organizers with badge issuance.</p>
+          <h3>Orador</h3>
+          <p>Dio una charla o taller. Verificado por los organizadores del evento con emisión de badge.</p>
         </div>
         <div class="card">
           <div class="card-icon">👨‍💻</div>
-          <h3>Contributor</h3>
-          <p>Built something for the community. Code, content, tools, or infrastructure.</p>
+          <h3>Contribuyente</h3>
+          <p>Construyó algo para la comunidad. Código, contenido, herramientas o infraestructura.</p>
         </div>
         <div class="card">
           <div class="card-icon">⚡</div>
-          <h3>Donor</h3>
-          <p>Supported La Crypta via Lightning zaps. Verified through NIP-57 receipts.</p>
+          <h3>Donante</h3>
+          <p>Apoyó a La Crypta con zaps de Lightning. Verificado con recibos NIP-57.</p>
         </div>
         <div class="card">
           <div class="card-icon">✅</div>
-          <h3>Verified Member</h3>
-          <p>Identity confirmed through NIP-05 DNS verification. The base of trust.</p>
+          <h3>Miembro verificado</h3>
+          <p>Identidad confirmada por verificación DNS NIP-05. La base de la confianza.</p>
         </div>
         <div class="card">
           <div class="card-icon">🏆</div>
-          <h3>Core Member</h3>
-          <p>Long-term contributor with multiple badges. The real cypherpunk jungle animals.</p>
+          <h3>Miembro Core</h3>
+          <p>Contribuyente de largo plazo con varios badges. Los verdaderos animales cypherpunk de la jungla.</p>
         </div>
       </div>
     </section>
@@ -799,8 +799,8 @@
     <!-- COMMUNITY PROFILES -->
     <section class="section">
       <div class="section-header">
-        <h2>Profile Preview</h2>
-        <p>Members of the community with different reputation levels. Spot the scammer.</p>
+        <h2>Vista previa de perfiles</h2>
+        <p>Miembros de la comunidad con distintos niveles de reputación. Detectá al scammer.</p>
       </div>
 
       <div class="profiles-grid">
@@ -815,15 +815,15 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge">📍 24 Events</span>
-            <span class="profile-badge">🎤 Speaker</span>
-            <span class="profile-badge">👨‍💻 Contributor</span>
-            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">📍 24 eventos</span>
+            <span class="profile-badge">🎤 Orador</span>
+            <span class="profile-badge">👨‍💻 Contribuyente</span>
+            <span class="profile-badge">⚡ Donante</span>
             <span class="profile-badge">🏆 Core</span>
           </div>
           <div class="reputation-bar">
             <div class="reputation-label">
-              <span>Reputation</span>
+              <span>Reputación</span>
               <span>97/100</span>
             </div>
             <div class="reputation-track">
@@ -842,14 +842,14 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge">📍 18 Events</span>
-            <span class="profile-badge">⚡ Donor</span>
-            <span class="profile-badge">👨‍💻 Contributor</span>
+            <span class="profile-badge">📍 18 eventos</span>
+            <span class="profile-badge">⚡ Donante</span>
+            <span class="profile-badge">👨‍💻 Contribuyente</span>
             <span class="profile-badge">🏆 Core</span>
           </div>
           <div class="reputation-bar">
             <div class="reputation-label">
-              <span>Reputation</span>
+              <span>Reputación</span>
               <span>88/100</span>
             </div>
             <div class="reputation-track">
@@ -868,13 +868,13 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge">📍 15 Events</span>
-            <span class="profile-badge">🎤 Speaker</span>
-            <span class="profile-badge">✅ Verified</span>
+            <span class="profile-badge">📍 15 eventos</span>
+            <span class="profile-badge">🎤 Orador</span>
+            <span class="profile-badge">✅ Verificado</span>
           </div>
           <div class="reputation-bar">
             <div class="reputation-label">
-              <span>Reputation</span>
+              <span>Reputación</span>
               <span>78/100</span>
             </div>
             <div class="reputation-track">
@@ -893,13 +893,13 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge">📍 6 Events</span>
-            <span class="profile-badge">⚡ Donor</span>
-            <span class="profile-badge">✅ Verified</span>
+            <span class="profile-badge">📍 6 eventos</span>
+            <span class="profile-badge">⚡ Donante</span>
+            <span class="profile-badge">✅ Verificado</span>
           </div>
           <div class="reputation-bar">
             <div class="reputation-label">
-              <span>Reputation</span>
+              <span>Reputación</span>
               <span>55/100</span>
             </div>
             <div class="reputation-track">
@@ -918,15 +918,15 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge">📍 12 Events</span>
-            <span class="profile-badge">🎤 Speaker</span>
-            <span class="profile-badge">👨‍💻 Contributor</span>
-            <span class="profile-badge">⚡ Donor</span>
+            <span class="profile-badge">📍 12 eventos</span>
+            <span class="profile-badge">🎤 Orador</span>
+            <span class="profile-badge">👨‍💻 Contribuyente</span>
+            <span class="profile-badge">⚡ Donante</span>
             <span class="profile-badge">🏆 Core</span>
           </div>
           <div class="reputation-bar">
             <div class="reputation-label">
-              <span>Reputation</span>
+              <span>Reputación</span>
               <span>92/100</span>
             </div>
             <div class="reputation-track">
@@ -937,7 +937,7 @@
 
         <!-- LAPIJA DEL NEGR0 - SPAMMER -->
         <div class="profile-card spammer">
-          <div class="spammer-tag">⚠️ SPAMMER DETECTED</div>
+          <div class="spammer-tag">⚠️ SPAMMER DETECTADO</div>
           <div class="profile-header">
             <div class="profile-avatar" style="background: rgba(255,68,68,0.2);">🚫</div>
             <div>
@@ -946,13 +946,13 @@
             </div>
           </div>
           <div class="profile-badges">
-            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚫 0 Events</span>
-            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚨 No NIP-05</span>
+            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚫 0 eventos</span>
+            <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🚨 Sin NIP-05</span>
             <span class="profile-badge" style="background: rgba(255,68,68,0.15); border-color: rgba(255,68,68,0.3); color: #ff6666;">🤡 Come empanadas</span>
           </div>
           <div class="reputation-bar reputation-low">
             <div class="reputation-label">
-              <span style="color: #ff6666;">Reputation</span>
+              <span style="color: #ff6666;">Reputación</span>
               <span style="color: #ff6666;">3/100</span>
             </div>
             <div class="reputation-track">
@@ -967,8 +967,8 @@
     <!-- DISCORD INTEGRATION IDEAS -->
     <section class="section" style="background: linear-gradient(135deg, rgba(180, 249, 83, 0.05) 0%, transparent 100%); border-radius: 24px; margin: 80px auto; max-width: 1200px;">
       <div class="section-header">
-        <h2>💬 Discord Integration</h2>
-        <p>Extend identity verification and reputation badges to Discord. Three modules ready to drop in — click any card to see the one-step integration.</p>
+        <h2>💬 Integración con Discord</h2>
+        <p>Extendé la verificación de identidad y los badges de reputación a Discord. Tres módulos listos para instalar — hacé click en cualquier tarjeta para ver la integración de un solo paso.</p>
       </div>
 
       <div class="cards-grid" id="discord-modules" style="margin-bottom: 40px; justify-content: center;">
@@ -976,31 +976,31 @@
         <!-- MODULE 1: BOT -->
         <div class="card" data-module="bot" style="display: flex; flex-direction: column;">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent); font-size: 28px;">🤖</div>
-          <h3>Discord Bot Verification</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 16px;">Auto-verify users with Nostr identity. Commands to check profiles and badges in real-time.</p>
+          <h3>Verificación con bot de Discord</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Autoverificá usuarios con identidad Nostr. Comandos para revisar perfiles y badges en tiempo real.</p>
           <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); font-family: monospace; margin-bottom: 12px;">
             /verify satoshi@lacrypta.ar<br>
             /profile @user<br>
             /check-scammer &lt;pubkey&gt;
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-            <span class="profile-badge">⚡ Instant verification</span>
-            <span class="profile-badge">🏅 Auto-role assignment</span>
-            <span class="profile-badge">📊 Live reputation</span>
+            <span class="profile-badge">⚡ Verificación instantánea</span>
+            <span class="profile-badge">🏅 Asignación automática de roles</span>
+            <span class="profile-badge">📊 Reputación en vivo</span>
           </div>
           <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('bot')">➕ Install Bot on Discord</button>
-            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('bot')">📖 View setup guide</button>
+            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('bot')">➕ Instalar bot en Discord</button>
+            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('bot')">📖 Ver guía de instalación</button>
           </div>
           <div class="guide" id="guide-bot" style="display: none; margin-top: 12px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-            <strong style="color: var(--accent);">1-step install</strong>
+            <strong style="color: var(--accent);">Instalación en 1 paso</strong>
             <ol style="margin: 8px 0 0 18px; padding: 0;">
-              <li>Click <em>Install Bot on Discord</em> → Discord OAuth opens.</li>
-              <li>Pick your server, accept scopes <code>bot applications.commands</code>.</li>
-              <li>Bot self-registers 3 slash commands and pulls your NIP-05 directory.</li>
+              <li>Hacé click en <em>Instalar bot en Discord</em> → se abre el OAuth de Discord.</li>
+              <li>Elegí tu servidor y aceptá los scopes <code>bot applications.commands</code>.</li>
+              <li>El bot se autoregistra con 3 slash commands y trae tu directorio NIP-05.</li>
             </ol>
             <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); color: var(--text-muted);">
-              Required permissions: <code>Manage Roles</code>, <code>Read Messages</code>, <code>Send Messages</code>.
+              Permisos requeridos: <code>Manage Roles</code>, <code>Read Messages</code>, <code>Send Messages</code>.
             </div>
           </div>
         </div>
@@ -1008,28 +1008,28 @@
         <!-- MODULE 2: WEBHOOK -->
         <div class="card" data-module="webhook" style="display: flex; flex-direction: column;">
           <div class="card-icon" style="background: rgba(180, 249, 83, 0.1);">🔗</div>
-          <h3>Webhook Auto-Sync</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 16px;">Badge changes sync to Discord instantly. User gana badge → Bot updates roles automatically.</p>
+          <h3>Sincronización por webhook</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Los cambios de badges se sincronizan con Discord al instante. El usuario gana un badge → el bot actualiza los roles automáticamente.</p>
           <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-            🎤 Speaker badge gained<br>
+            🎤 Badge de orador conseguido<br>
             ↓<br>
-            @user gets role "Speaker" in Discord
+            @usuario recibe el rol "Orador" en Discord
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-            <span class="profile-badge">⚙️ Real-time sync</span>
-            <span class="profile-badge">🎯 No manual updates</span>
-            <span class="profile-badge">✨ Seamless UX</span>
+            <span class="profile-badge">⚙️ Sincronización en tiempo real</span>
+            <span class="profile-badge">🎯 Sin actualizaciones manuales</span>
+            <span class="profile-badge">✨ UX fluida</span>
           </div>
           <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('webhook')">🔗 Connect Webhook</button>
-            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('webhook')">📖 View setup guide</button>
+            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('webhook')">🔗 Conectar webhook</button>
+            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('webhook')">📖 Ver guía de instalación</button>
           </div>
           <div class="guide" id="guide-webhook" style="display: none; margin-top: 12px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-            <strong style="color: var(--accent);">Paste your Discord webhook URL</strong>
-            <p style="margin: 6px 0;">In Discord: Server Settings → Integrations → Webhooks → <em>Copy URL</em>. Paste it into the installer when prompted.</p>
+            <strong style="color: var(--accent);">Pegá tu URL de webhook de Discord</strong>
+            <p style="margin: 6px 0;">En Discord: Ajustes del servidor → Integraciones → Webhooks → <em>Copiar URL</em>. Pegala en el instalador cuando te lo pida.</p>
             <div style="font-family: monospace; padding: 8px; background: var(--bg-primary); border-radius: 6px; word-break: break-all; margin: 6px 0;">https://discord.com/api/webhooks/&lt;id&gt;/&lt;token&gt;</div>
             <div style="margin-top: 10px; color: var(--text-muted);">
-              Identity Hub POSTs every badge event to your webhook within ~1s of issuance.
+              Identity Hub envía (POST) cada evento de badge a tu webhook en ~1s de haberlo emitido.
             </div>
           </div>
         </div>
@@ -1037,28 +1037,28 @@
         <!-- MODULE 3: GATEKEEPING -->
         <div class="card" data-module="gate" style="display: flex; flex-direction: column;">
           <div class="card-icon" style="background: rgba(180, 249, 83, 0.1);">🔐</div>
-          <h3>Verification on Entry</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 16px;">New members must verify their Nostr identity to access the server. Gatekeeping against scammers.</p>
+          <h3>Verificación al ingresar</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">Los nuevos miembros deben verificar su identidad Nostr para acceder al servidor. Control de acceso contra scammers.</p>
           <div style="background: var(--bg-elevated); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-            New user joins → Modal: Verify identity<br>
-            ✅ Has badges → Full access<br>
-            ⚠️ No badges → Read-only
+            Nuevo usuario entra → Modal: verificar identidad<br>
+            ✅ Tiene badges → acceso total<br>
+            ⚠️ Sin badges → solo lectura
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-            <span class="profile-badge">🛡️ Scammer protection</span>
-            <span class="profile-badge">📜 Verification required</span>
-            <span class="profile-badge">⚠️ Come empanadas blocked</span>
+            <span class="profile-badge">🛡️ Protección anti-scammer</span>
+            <span class="profile-badge">📜 Verificación obligatoria</span>
+            <span class="profile-badge">⚠️ Come empanadas bloqueados</span>
           </div>
           <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
-            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('gate')">🔐 Enable Gatekeeping</button>
-            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('gate')">📖 View setup guide</button>
+            <button class="btn btn-accent" style="width: 100%; justify-content: center;" onclick="installModule('gate')">🔐 Activar control de acceso</button>
+            <button class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="toggleGuide('gate')">📖 Ver guía de instalación</button>
           </div>
           <div class="guide" id="guide-gate" style="display: none; margin-top: 12px; padding: 14px; background: var(--bg-elevated); border-radius: 10px; font-size: 12px; color: var(--text-secondary); line-height: 1.6;">
-            <strong style="color: var(--accent);">Requires: Bot already installed</strong>
+            <strong style="color: var(--accent);">Requisito: el bot ya debe estar instalado</strong>
             <ol style="margin: 8px 0 0 18px; padding: 0;">
-              <li>Run <code>/gate enable</code> in any channel.</li>
-              <li>Bot creates a <em>@Verified</em> role and locks all channels except <em>#welcome</em>.</li>
-              <li>Joiners see a modal with the <code>Verify my Nostr</code> button.</li>
+              <li>Ejecutá <code>/gate enable</code> en cualquier canal.</li>
+              <li>El bot crea un rol <em>@Verified</em> y bloquea todos los canales salvo <em>#welcome</em>.</li>
+              <li>Los que ingresan ven un modal con el botón <code>Verificar mi Nostr</code>.</li>
             </ol>
           </div>
         </div>
@@ -1068,8 +1068,8 @@
       <!-- INTEGRATION STATUS BAR -->
       <div style="max-width: 860px; margin: 0 auto; padding: 20px 28px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;">
         <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary);">
-          <div><strong style="color: var(--accent);">All three modules share the same Nostr-hub source of truth.</strong></div>
-          <div>Bot can run standalone; Gate needs the Bot installed first.</div>
+          <div><strong style="color: var(--accent);">Los tres módulos comparten la misma fuente de verdad del Nostr-hub.</strong></div>
+          <div>El bot funciona por sí solo; el control de acceso requiere instalar primero el bot.</div>
         </div>
       </div>
     </section>
@@ -1077,49 +1077,49 @@
     <!-- ====== SECURITY & PENTEST ====== -->
     <section class="section" id="security-section" style="background: linear-gradient(135deg, rgba(180, 249, 83, 0.04) 0%, transparent 100%); border-radius: 24px; margin: 80px auto; max-width: 1200px; padding-top: 48px; padding-bottom: 48px;">
       <div class="section-header">
-        <h2>🛡️ Security & Pentest</h2>
-        <p>Identity infrastructure is only as trustworthy as its weakest endpoint. This project was pentested before submission — every CRITICAL and HIGH finding was closed.</p>
+        <h2>🛡️ Seguridad y pentest</h2>
+        <p>La infraestructura de identidad es tan confiable como su endpoint más débil. Auditamos este proyecto antes de entregarlo — cada hallazgo CRITICAL y HIGH fue cerrado.</p>
       </div>
 
       <!-- Headline stats -->
       <div class="cards-grid" style="margin-bottom: 32px;">
         <div class="card" style="text-align: center; border: 2px solid var(--accent);">
           <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">10/10</div>
-          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Attack scenarios blocked</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Escenarios de ataque bloqueados</div>
         </div>
         <div class="card" style="text-align: center; border: 2px solid var(--accent);">
           <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">0</div>
-          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Critical / High unresolved</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Critical / High sin resolver</div>
         </div>
         <div class="card" style="text-align: center; border: 2px solid var(--accent);">
           <div style="font-size: 42px; font-weight: 800; color: var(--accent); line-height: 1;">NIP-98</div>
-          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Mandatory on write endpoints</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">Obligatorio en endpoints de escritura</div>
         </div>
       </div>
 
       <!-- Attack matrix -->
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 32px; overflow-x: auto;">
-        <h3 style="color: var(--accent); margin-bottom: 16px; font-size: 16px;">🧪 Pentest results — register endpoint</h3>
+        <h3 style="color: var(--accent); margin-bottom: 16px; font-size: 16px;">🧪 Resultados del pentest — endpoint register</h3>
         <table style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px;">
           <thead>
             <tr style="color: var(--text-muted); text-align: left; border-bottom: 1px solid var(--border);">
               <th style="padding: 8px 10px; font-weight: 600;">#</th>
-              <th style="padding: 8px 10px; font-weight: 600;">Attack</th>
-              <th style="padding: 8px 10px; font-weight: 600;">Result</th>
-              <th style="padding: 8px 10px; font-weight: 600;">Status</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Ataque</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Resultado</th>
+              <th style="padding: 8px 10px; font-weight: 600;">Estado</th>
             </tr>
           </thead>
           <tbody style="color: var(--text-secondary);">
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A1</td><td style="padding: 8px 10px;">Register without Authorization</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A2</td><td style="padding: 8px 10px;">Identity hijack (auth pubkey ≠ body.pubkey)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A3</td><td style="padding: 8px 10px;">Body tampering after signing</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A4</td><td style="padding: 8px 10px;">Replay (event older than 60s)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A5</td><td style="padding: 8px 10px;">Claim reserved name (“admin”)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A6</td><td style="padding: 8px 10px;">Oversized displayName (200 chars)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A7</td><td style="padding: 8px 10px;">Form-encoded CSRF (simple request)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">415</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A8</td><td style="padding: 8px 10px;">IP flood (12 rapid requests)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">429</td><td style="padding: 8px 10px; color: var(--accent);">✓ throttled</td></tr>
-            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A9</td><td style="padding: 8px 10px;">Name starts with “.” (regex bypass)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
-            <tr><td style="padding: 8px 10px;">A10</td><td style="padding: 8px 10px;">Malformed pubkey (not hex-64)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ blocked</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A1</td><td style="padding: 8px 10px;">Registrar sin cabecera Authorization</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A2</td><td style="padding: 8px 10px;">Suplantación de identidad (auth pubkey ≠ body.pubkey)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A3</td><td style="padding: 8px 10px;">Manipular el body después de firmar</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A4</td><td style="padding: 8px 10px;">Replay (evento con más de 60s)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">401</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A5</td><td style="padding: 8px 10px;">Reclamar nombre reservado (“admin”)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">403</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A6</td><td style="padding: 8px 10px;">displayName demasiado largo (200 chars)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A7</td><td style="padding: 8px 10px;">CSRF form-encoded (simple request)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">415</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A8</td><td style="padding: 8px 10px;">Flood de IP (12 requests rápidos)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">429</td><td style="padding: 8px 10px; color: var(--accent);">✓ throttle aplicado</td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 10px;">A9</td><td style="padding: 8px 10px;">Nombre empieza con “.” (bypass de regex)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
+            <tr><td style="padding: 8px 10px;">A10</td><td style="padding: 8px 10px;">pubkey mal formada (no es hex-64)</td><td style="padding: 8px 10px; font-family: monospace; color: var(--text-primary);">400</td><td style="padding: 8px 10px; color: var(--accent);">✓ bloqueado</td></tr>
           </tbody>
         </table>
       </div>
@@ -1128,40 +1128,40 @@
       <div class="cards-grid" style="margin-bottom: 32px;">
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🔐</div>
-          <h3>NIP-98 Auth</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;">Kind 27235 signed event required on <code>POST /api/register</code>. Server checks signature, URL match, method match, body hash, ±60s replay window, and that <code>event.pubkey === body.pubkey</code>.</p>
+          <h3>Autenticación NIP-98</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">Se requiere un evento firmado kind 27235 en <code>POST /api/register</code>. El servidor valida la firma, la coincidencia de URL, la coincidencia de método, el hash del body, la ventana de replay de ±60s y que <code>event.pubkey === body.pubkey</code>.</p>
         </div>
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">⏱️</div>
           <h3>Rate limiting</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;">Sliding window: <strong>10 reqs / 10 min per IP</strong> and <strong>3 registrations / hour per pubkey</strong>. Kills automated squatting.</p>
+          <p style="color: var(--text-secondary); font-size: 13px;">Ventana deslizante: <strong>10 reqs / 10 min por IP</strong> y <strong>3 registros / hora por pubkey</strong>. Mata el squatting automatizado.</p>
         </div>
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🚫</div>
-          <h3>Reserved names</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;">24 protected handles: <code>admin</code>, <code>root</code>, <code>lacrypta</code>, <code>satoshi</code>, <code>support</code>, <code>api</code>… full list in SECURITY.md.</p>
+          <h3>Nombres reservados</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">24 handles protegidos: <code>admin</code>, <code>root</code>, <code>lacrypta</code>, <code>satoshi</code>, <code>support</code>, <code>api</code>… lista completa en SECURITY.md.</p>
         </div>
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">📏</div>
-          <h3>Input caps</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;">Strict regex on name, 64-char hex pubkey, displayName ≤ 64 chars, body ≤ 2 KB. Content-Type must be <code>application/json</code>.</p>
+          <h3>Límites de entrada</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">Regex estricta en el nombre, pubkey hex de 64 chars, displayName ≤ 64 chars, body ≤ 2 KB. Content-Type debe ser <code>application/json</code>.</p>
         </div>
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">🛡️</div>
-          <h3>HTTP hardening</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;">CSP, HSTS (2y preload), X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy, Permissions-Policy. <code>Cache-Control: no-store</code> on every API response.</p>
+          <h3>Hardening HTTP</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;">CSP, HSTS (preload de 2 años), X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy, Permissions-Policy. <code>Cache-Control: no-store</code> en todas las respuestas de la API.</p>
         </div>
         <div class="card">
           <div class="card-icon" style="background: var(--accent-dim); color: var(--accent);">📦</div>
-          <h3>Supply chain</h3>
-          <p style="color: var(--text-secondary); font-size: 13px;"><code>nostr-tools</code> pinned to exact <code>2.7.2</code> (no caret). ADMIN_KEY compared with <code>crypto.timingSafeEqual</code>. Planned: bundle crypto deps with Vite.</p>
+          <h3>Cadena de suministro</h3>
+          <p style="color: var(--text-secondary); font-size: 13px;"><code>nostr-tools</code> fijado a la versión exacta <code>2.7.2</code> (sin caret). ADMIN_KEY comparada con <code>crypto.timingSafeEqual</code>. Planeado: bundlear las dependencias cripto con Vite.</p>
         </div>
       </div>
 
       <!-- Links -->
       <div style="text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="./PENTEST.md" target="_blank" class="btn btn-accent" style="padding: 12px 20px;">📄 Read full pentest</a>
-        <a href="./SECURITY.md" target="_blank" class="btn" style="padding: 12px 20px;">🔒 Security policy</a>
+        <a href="./PENTEST.md" target="_blank" class="btn btn-accent" style="padding: 12px 20px;">📄 Leer el pentest completo</a>
+        <a href="./SECURITY.md" target="_blank" class="btn" style="padding: 12px 20px;">🔒 Política de seguridad</a>
       </div>
     </section>
   </div>
@@ -1170,61 +1170,61 @@
   <div class="view" id="view-create">
     <section class="section" style="padding-top: 140px; max-width: 500px;">
       <div class="section-header">
-        <h2>Create Your Profile</h2>
-        <p>Connect your Nostr identity and start building reputation.</p>
+        <h2>Creá tu perfil</h2>
+        <p>Conectá tu identidad Nostr y empezá a construir reputación.</p>
       </div>
 
       <div class="card" style="padding: 32px;">
         <!-- Mode switch -->
         <div style="display: flex; gap: 8px; margin-bottom: 20px; background: var(--bg-elevated); padding: 4px; border-radius: 10px;">
-          <button type="button" id="mode-generate" class="btn" style="flex: 1; justify-content: center; background: var(--accent); color: var(--bg-primary);" onclick="setCreateMode('generate')">🔑 Generate new</button>
-          <button type="button" id="mode-existing" class="btn" style="flex: 1; justify-content: center; background: transparent; color: var(--text-secondary);" onclick="setCreateMode('existing')">📥 I have an npub</button>
+          <button type="button" id="mode-generate" class="btn" style="flex: 1; justify-content: center; background: var(--accent); color: var(--bg-primary);" onclick="setCreateMode('generate')">🔑 Generar nueva</button>
+          <button type="button" id="mode-existing" class="btn" style="flex: 1; justify-content: center; background: transparent; color: var(--text-secondary);" onclick="setCreateMode('existing')">📥 Ya tengo una npub</button>
         </div>
 
         <div class="form-group" id="field-npub" style="display: none;">
-          <label class="form-label">Nostr Public Key (npub)</label>
+          <label class="form-label">Clave pública de Nostr (npub)</label>
           <input type="text" class="input" id="input-npub" placeholder="npub1..." autocomplete="off">
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Paste your existing npub from Alby, nos2x, Amethyst, Damus, etc.</p>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Pegá tu npub existente de Alby, nos2x, Amethyst, Damus, etc.</p>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Display Name</label>
-          <input type="text" class="input" id="input-name" placeholder="e.g. Agus Gorilla">
+          <label class="form-label">Nombre visible</label>
+          <input type="text" class="input" id="input-name" placeholder="ej. Agus Gorilla">
         </div>
 
         <div class="form-group">
-          <label class="form-label">Desired NIP-05 identifier</label>
+          <label class="form-label">Identificador NIP-05 deseado</label>
           <div style="display: flex; gap: 4px; align-items: center;">
-            <input type="text" class="input" id="input-nip05" placeholder="username" style="flex: 1;" autocomplete="off">
+            <input type="text" class="input" id="input-nip05" placeholder="usuario" style="flex: 1;" autocomplete="off">
             <span style="color: var(--text-muted); font-size: 14px;">@lacrypta.ar</span>
           </div>
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">2-32 chars, lowercase. This becomes your verifiable handle.</p>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">2-32 caracteres, minúscula. Este será tu handle verificable.</p>
         </div>
 
         <button class="btn btn-accent" id="btn-create" style="width: 100%; justify-content: center; margin-top: 16px;" onclick="createProfile()">
-          Register Identity ↗
+          Registrar identidad ↗
         </button>
         <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; text-align: center;">
-          Your NIP-05 will be served from <code style="color: var(--accent);">/.well-known/nostr.json</code> so any Nostr client can verify you.
+          Tu NIP-05 se sirve desde <code style="color: var(--accent);">/.well-known/nostr.json</code> para que cualquier cliente Nostr te pueda verificar.
         </p>
 
         <!-- Success panel (hidden until registration succeeds) -->
         <div id="create-success" style="display: none; margin-top: 24px; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--accent); border-radius: 12px;">
-          <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 14px;">✅ Identity registered</h3>
+          <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 14px;">✅ Identidad registrada</h3>
           <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 10px;">NIP-05:</div>
           <div id="success-nip05" style="font-family: monospace; font-size: 13px; color: var(--text-primary); margin-bottom: 14px; word-break: break-all;"></div>
 
-          <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;">Public key (npub):</div>
+          <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 6px;">Clave pública (npub):</div>
           <div id="success-npub" style="font-family: monospace; font-size: 12px; color: var(--text-primary); margin-bottom: 14px; word-break: break-all; padding: 8px; background: var(--bg-primary); border-radius: 6px;"></div>
 
           <div id="success-nsec-wrap" style="display: none;">
-            <div style="font-size: 12px; color: var(--warning, #ff9d3d); margin-bottom: 6px;">⚠️ Private key (nsec) — SAVE THIS NOW, it is your only proof of ownership:</div>
+            <div style="font-size: 12px; color: var(--warning, #ff9d3d); margin-bottom: 6px;">⚠️ Clave privada (nsec) — GUARDALA AHORA, es tu única prueba de propiedad:</div>
             <div id="success-nsec" style="font-family: monospace; font-size: 12px; color: var(--text-primary); margin-bottom: 8px; word-break: break-all; padding: 8px; background: var(--bg-primary); border: 1px dashed var(--warning, #ff9d3d); border-radius: 6px;"></div>
-            <button type="button" class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="copyNsec()">📋 Copy nsec</button>
+            <button type="button" class="btn" style="width: 100%; justify-content: center; font-size: 12px;" onclick="copyNsec()">📋 Copiar nsec</button>
           </div>
 
           <button type="button" class="btn btn-accent" style="width: 100%; justify-content: center; margin-top: 16px;" onclick="showView('directory'); loadDirectory();">
-            View Directory →
+            Ver directorio →
           </button>
         </div>
       </div>
@@ -1235,17 +1235,17 @@
   <div class="view" id="view-directory">
     <section class="section" style="padding-top: 140px;">
       <div class="section-header">
-        <h2>Community Directory</h2>
-        <p>Verified members of La Crypta with their reputation badges.</p>
+        <h2>Directorio de la comunidad</h2>
+        <p>Miembros verificados de La Crypta con sus badges de reputación.</p>
       </div>
 
       <div style="max-width: 500px; margin: 0 auto 32px;">
-        <input type="text" class="input" id="input-search" placeholder="Search by name, npub, or NIP-05..." oninput="filterDirectory()">
+        <input type="text" class="input" id="input-search" placeholder="Buscar por nombre, npub o NIP-05..." oninput="filterDirectory()">
       </div>
 
       <div id="directory-list" class="cards-grid">
         <div class="card" style="text-align: center; padding: 48px;">
-          <p style="color: var(--text-muted);">Loading verified members from Nostr relays...</p>
+          <p style="color: var(--text-muted);">Cargando miembros verificados desde los relays de Nostr...</p>
         </div>
       </div>
     </section>
@@ -1255,17 +1255,17 @@
   <div class="view" id="view-verify">
     <section class="section" style="padding-top: 140px; max-width: 500px;">
       <div class="section-header">
-        <h2>Verify a Member</h2>
-        <p>Check if someone is really who they claim to be.</p>
+        <h2>Verificar a un miembro</h2>
+        <p>Comprobá si alguien es realmente quien dice ser.</p>
       </div>
 
       <div class="card" style="padding: 32px;">
         <div class="form-group">
-          <label class="form-label">Nostr Public Key or NIP-05</label>
-          <input type="text" class="input" id="input-verify" placeholder="npub1... or user@lacrypta.ar">
+          <label class="form-label">Clave pública Nostr o NIP-05</label>
+          <input type="text" class="input" id="input-verify" placeholder="npub1... o usuario@lacrypta.ar">
         </div>
         <button class="btn btn-accent" style="width: 100%; justify-content: center; margin-top: 8px;" onclick="verifyMember()">
-          Verify Identity
+          Verificar identidad
         </button>
       </div>
 
@@ -1276,7 +1276,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <p>
-      Built with ⚡ for <a href="https://lacrypta.ar" target="_blank">La Crypta</a> —
+      Hecho con ⚡ para <a href="https://lacrypta.ar" target="_blank">La Crypta</a> —
       Hackathon Abril 2026 — Nostr Identity & Social
     </p>
     <p style="margin-top: 8px; font-size: 12px;">
@@ -1421,7 +1421,7 @@
       } else if (window.nostr && typeof window.nostr.signEvent === 'function') {
         signed = await window.nostr.signEvent(template);
       } else {
-        throw new Error('No key available to sign — install Alby/nos2x or generate a new identity');
+        throw new Error('No hay clave disponible para firmar — instalá Alby/nos2x o generá una identidad nueva');
       }
 
       const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(signed))));
@@ -1434,11 +1434,11 @@
       const nip05Name = document.getElementById('input-nip05').value.trim().toLowerCase();
 
       // Validation
-      if (!displayName) return showToast('Display name is required', 'error');
-      if (displayName.length > 64) return showToast('Display name max 64 chars', 'error');
-      if (!nip05Name) return showToast('NIP-05 username is required', 'error');
+      if (!displayName) return showToast('El nombre visible es obligatorio', 'error');
+      if (displayName.length > 64) return showToast('El nombre visible no puede superar los 64 caracteres', 'error');
+      if (!nip05Name) return showToast('El usuario NIP-05 es obligatorio', 'error');
       if (!NIP05_RE.test(nip05Name)) {
-        return showToast('Username: 2-32 chars, alnum, with _ - . in the middle', 'error');
+        return showToast('Usuario: 2-32 caracteres alfanuméricos, con _ - . en el medio', 'error');
       }
 
       let pubkeyHex;
@@ -1448,13 +1448,13 @@
 
       if (createMode === 'existing') {
         const npubInput = document.getElementById('input-npub').value.trim();
-        if (!npubInput) return showToast('Enter your npub or switch to Generate', 'error');
+        if (!npubInput) return showToast('Ingresá tu npub o cambiá a Generar nueva', 'error');
         pubkeyHex = decodeNpub(npubInput);
-        if (!pubkeyHex) return showToast('Invalid npub — check the prefix and length', 'error');
+        if (!pubkeyHex) return showToast('npub inválida — revisá el prefijo y la longitud', 'error');
         npub = npubInput;
         // No sk → must use NIP-07 extension to sign
         if (!window.nostr || typeof window.nostr.signEvent !== 'function') {
-          return showToast('To register an existing npub you need a NIP-07 extension (Alby, nos2x). Or pick Generate new.', 'error');
+          return showToast('Para registrar una npub existente necesitás una extensión NIP-07 (Alby, nos2x). O elegí Generar nueva.', 'error');
         }
       } else {
         // Generate a new keypair
@@ -1466,7 +1466,7 @@
 
       btn.disabled = true;
       const originalLabel = btn.innerHTML;
-      btn.innerHTML = 'Registering…';
+      btn.innerHTML = 'Registrando…';
 
       try {
         const bodyObj = { name: nip05Name, pubkey: pubkeyHex, displayName };
@@ -1492,7 +1492,7 @@
         const data = await res.json().catch(() => ({}));
 
         if (!res.ok) {
-          throw new Error(data.error || `Server error ${res.status}`);
+          throw new Error(data.error || `Error del servidor ${res.status}`);
         }
 
         const profile = {
@@ -1517,10 +1517,10 @@
           document.getElementById('success-nsec-wrap').style.display = 'none';
         }
         document.getElementById('create-success').style.display = '';
-        showToast(`Welcome ${displayName}! Identity registered.`);
+        showToast(`¡Bienvenido ${displayName}! Identidad registrada.`);
       } catch (err) {
         console.error('[createProfile]', err);
-        showToast(err.message || 'Registration failed', 'error');
+        showToast(err.message || 'Falló el registro', 'error');
       } finally {
         btn.disabled = false;
         btn.innerHTML = originalLabel;
@@ -1531,9 +1531,9 @@
       if (!lastGeneratedNsec) return;
       try {
         await navigator.clipboard.writeText(lastGeneratedNsec);
-        showToast('nsec copied — store it in a password manager');
+        showToast('nsec copiada — guardala en un gestor de contraseñas');
       } catch {
-        showToast('Copy failed — select the text manually', 'error');
+        showToast('No se pudo copiar — seleccioná el texto a mano', 'error');
       }
     };
 
@@ -1541,9 +1541,9 @@
     window.verifyMember = async function() {
       const input = document.getElementById('input-verify').value.trim();
       const resultDiv = document.getElementById('verify-result');
-      if (!input) return showToast('Enter a npub or NIP-05 address', 'error');
+      if (!input) return showToast('Ingresá una npub o una dirección NIP-05', 'error');
 
-      resultDiv.innerHTML = `<div class="card" style="padding: 24px; text-align: center; color: var(--text-muted);">🔎 Verifying…</div>`;
+      resultDiv.innerHTML = `<div class="card" style="padding: 24px; text-align: center; color: var(--text-muted);">🔎 Verificando…</div>`;
 
       try {
         let pubkey = null;
@@ -1554,29 +1554,29 @@
 
         if (input.startsWith('npub1')) {
           pubkey = decodeNpub(input);
-          if (!pubkey) throw new Error('Invalid npub');
+          if (!pubkey) throw new Error('npub inválida');
         } else if (input.includes('@')) {
           // Strict split: exactly one "@"
           const parts = input.split('@');
-          if (parts.length !== 2) throw new Error('Input must be user@domain');
+          if (parts.length !== 2) throw new Error('El valor debe ser usuario@dominio');
           const rawName = parts[0].toLowerCase();
           const rawDomain = parts[1].toLowerCase();
-          if (!NIP05_RE.test(rawName)) throw new Error('Invalid NIP-05 username');
-          if (!DOMAIN_RE.test(rawDomain)) throw new Error('Invalid NIP-05 domain');
+          if (!NIP05_RE.test(rawName)) throw new Error('Usuario NIP-05 inválido');
+          if (!DOMAIN_RE.test(rawDomain)) throw new Error('Dominio NIP-05 inválido');
           nip05Name = rawName;
           nip05Full = `${rawName}@${rawDomain}`;
           const url = rawDomain === 'lacrypta.ar' || rawDomain === window.location.hostname
             ? `/.well-known/nostr.json?name=${encodeURIComponent(nip05Name)}`
             : `https://${rawDomain}/.well-known/nostr.json?name=${encodeURIComponent(nip05Name)}`;
           const r = await fetch(url);
-          if (!r.ok) throw new Error(`NIP-05 host returned ${r.status}`);
+          if (!r.ok) throw new Error(`El host NIP-05 devolvió ${r.status}`);
           const j = await r.json();
           pubkey = j && j.names && j.names[nip05Name];
           if (typeof pubkey !== 'string' || !/^[0-9a-f]{64}$/.test(pubkey)) {
-            throw new Error(`No valid NIP-05 record for "${nip05Full}"`);
+            throw new Error(`No hay registro NIP-05 válido para "${nip05Full}"`);
           }
         } else {
-          throw new Error('Input must be npub1… or user@domain');
+          throw new Error('El valor debe ser npub1… o usuario@dominio');
         }
 
         const npub = npubEncode(pubkey);
@@ -1588,21 +1588,21 @@
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
               <div style="font-size: 32px;">✅</div>
               <div>
-                <div style="font-weight: 700; font-size: 18px;">${local ? escapeHtml(local.name) : 'Verified pubkey'}</div>
-                <div style="color: var(--text-muted); font-size: 13px;">${nip05Full ? escapeHtml(nip05Full) + ' ✓' : 'npub-based lookup'}</div>
+                <div style="font-weight: 700; font-size: 18px;">${local ? escapeHtml(local.name) : 'Pubkey verificada'}</div>
+                <div style="color: var(--text-muted); font-size: 13px;">${nip05Full ? escapeHtml(nip05Full) + ' ✓' : 'Consulta por npub'}</div>
               </div>
             </div>
-            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Public key (hex)</div>
+            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Clave pública (hex)</div>
             <div style="font-family: monospace; font-size: 11px; word-break: break-all; padding: 8px; background: var(--bg-elevated); border-radius: 6px; margin-bottom: 10px;">${pubkey}</div>
             <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">npub</div>
             <div style="font-family: monospace; font-size: 11px; word-break: break-all; padding: 8px; background: var(--bg-elevated); border-radius: 6px;">${npub}</div>
-            ${local ? `<div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-secondary);">Registered at ${new Date(local.createdAt).toLocaleString()}</div>` : ''}
+            ${local ? `<div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-secondary);">Registrado el ${new Date(local.createdAt).toLocaleString()}</div>` : ''}
           </div>
         `;
       } catch (err) {
         resultDiv.innerHTML = `
           <div class="card" style="padding: 24px; border: 1px solid #e4564e;">
-            <div style="color: #e4564e; font-weight: 700; margin-bottom: 6px;">⚠️ Verification failed</div>
+            <div style="color: #e4564e; font-weight: 700; margin-bottom: 6px;">⚠️ Falló la verificación</div>
             <div style="color: var(--text-secondary); font-size: 13px;">${escapeHtml(err.message || String(err))}</div>
           </div>
         `;
@@ -1652,7 +1652,7 @@
       const container = document.getElementById('directory-list');
       if (!list.length) {
         container.innerHTML = `<div class="card" style="text-align: center; padding: 48px; grid-column: 1 / -1;">
-          <p style="color: var(--text-muted);">No profiles yet. <a href="#" onclick="showView('create'); return false;" style="color: var(--accent);">Create the first one →</a></p>
+          <p style="color: var(--text-muted);">Todavía no hay perfiles. <a href="#" onclick="showView('create'); return false;" style="color: var(--accent);">Creá el primero →</a></p>
         </div>`;
         return;
       }
@@ -1670,7 +1670,7 @@
               </div>
             </div>
             <div class="profile-badges">
-              <span class="profile-badge">✅ NIP-05 verified</span>
+              <span class="profile-badge">✅ NIP-05 verificado</span>
               ${p.createdAt ? `<span class="profile-badge">🆕 ${new Date(p.createdAt).toLocaleDateString()}</span>` : ''}
             </div>
             <div style="font-family: monospace; font-size: 11px; color: var(--text-muted); margin-top: 12px; word-break: break-all;">${escapeHtml(short)}</div>
@@ -1723,7 +1723,7 @@
       guide.style.display = isHidden ? 'block' : 'none';
       // Also update the button label for clarity
       const btn = document.querySelector(`[onclick="toggleGuide('${moduleId}')"]`);
-      if (btn) btn.textContent = isHidden ? '📕 Hide setup guide' : '📖 View setup guide';
+      if (btn) btn.textContent = isHidden ? '📕 Ocultar guía de instalación' : '📖 Ver guía de instalación';
     };
 
     // Placeholder Discord application client_id — replace with real one once the bot is published.
@@ -1753,9 +1753,9 @@
         // If the placeholder client_id is still in use we warn first so judges know why the modal fails.
         if (DISCORD_CLIENT_ID.startsWith('0000')) {
           showToast(
-            '⚠️ <strong>Demo mode:</strong> the bot client_id is not configured yet.<br>' +
-            'A production Discord application will replace this placeholder. ' +
-            'Opening the OAuth URL anyway so you can see the flow…',
+            '⚠️ <strong>Modo demo:</strong> todavía no está configurado el client_id del bot.<br>' +
+            'Una aplicación de Discord en producción va a reemplazar este placeholder. ' +
+            'Abrimos la URL de OAuth igual para que veas el flujo…',
             'info'
           );
         }
@@ -1768,12 +1768,12 @@
 
       if (moduleId === 'webhook') {
         const url = prompt(
-          'Paste your Discord webhook URL:\n' +
-          '(Server Settings → Integrations → Webhooks → New → Copy URL)'
+          'Pegá tu URL de webhook de Discord:\n' +
+          '(Ajustes del servidor → Integraciones → Webhooks → Nuevo → Copiar URL)'
         );
         if (!url) return;
         if (!/^https:\/\/discord(app)?\.com\/api\/webhooks\/\d+\/[\w-]+$/.test(url)) {
-          showToast('❌ That does not look like a valid Discord webhook URL.', 'error');
+          showToast('❌ Eso no parece una URL de webhook de Discord válida.', 'error');
           return;
         }
         // Persist locally so repeat installs remember — real backend would POST this to /api/integrations
@@ -1781,8 +1781,8 @@
         const snippet = `curl -X POST "${hubOrigin}/api/integrations/discord/webhook" -H "Content-Type: application/json" -d '{"webhook":"${url}"}'`;
         await copyText(snippet);
         showToast(
-          '✅ Webhook registered locally.<br>' +
-          '<small style="color:var(--text-muted)">An install command was copied to your clipboard so you can register it server-side.</small>',
+          '✅ Webhook registrado localmente.<br>' +
+          '<small style="color:var(--text-muted)">Se copió al portapapeles un comando de instalación para que lo registres del lado del servidor.</small>',
           'success'
         );
         return;
@@ -1792,8 +1792,8 @@
         const cmd = '/gate enable';
         const copied = await copyText(cmd);
         showToast(
-          `✅ Command <code>${cmd}</code> copied to clipboard.<br>` +
-          '<small style="color:var(--text-muted)">Paste it in any channel where the bot is installed to lock the server behind Nostr verification.</small>',
+          `✅ Comando <code>${cmd}</code> copiado al portapapeles.<br>` +
+          '<small style="color:var(--text-muted)">Pegalo en cualquier canal donde el bot esté instalado para bloquear el servidor detrás de la verificación Nostr.</small>',
           copied ? 'success' : 'info'
         );
         const guide = document.getElementById('guide-gate');
@@ -1801,7 +1801,7 @@
         return;
       }
 
-      showToast(`Unknown module: ${moduleId}`, 'error');
+      showToast(`Módulo desconocido: ${moduleId}`, 'error');
     };
 
     // --- Init ---
